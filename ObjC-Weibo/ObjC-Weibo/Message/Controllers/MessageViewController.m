@@ -7,6 +7,7 @@
 //
 
 #import "MessageViewController.h"
+#import "Macros.h"
 
 @interface MessageViewController ()
 
@@ -16,6 +17,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"写私信" style:UIBarButtonItemStylePlain target:self action:nil];
+    
+    self.navigationItem.rightBarButtonItem.enabled = NO;
     // Do any additional setup after loading the view.
 }
 

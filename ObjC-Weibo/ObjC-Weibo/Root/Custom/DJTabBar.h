@@ -1,5 +1,5 @@
 //
-//  HomeViewController.h
+//  DJTabBar.h
 //  ObjC-Weibo
 //
 //  Created by Dianyi Jiang on 17/07/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeViewController : UIViewController
-
-
+@interface DJTabBar : UITabBar
 
 @end

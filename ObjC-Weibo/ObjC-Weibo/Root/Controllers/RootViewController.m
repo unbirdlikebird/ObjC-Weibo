@@ -11,6 +11,8 @@
 #import "MessageViewController.h"
 #import "DiscoverViewController.h"
 #import "ProfileViewController.h"
+#import "DJNavigationController.h"
+#import "DJTabBar.h"
 
 @interface RootViewController ()
 
@@ -20,6 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     
     HomeViewController *homeVC = [[HomeViewController alloc]init];
     [self addChildVC:homeVC withTitle:@"home" withImageName:@"tabbar_home"];
@@ -32,6 +35,11 @@
     
     ProfileViewController *profileVC = [[ProfileViewController alloc]init];
     [self addChildVC:profileVC withTitle:@"profile" withImageName:@"tabbar_profile"];
+
+    [self setValue:[[DJTabBar alloc]init] forKey:@"tabBar"];
+    
+    self.selectedIndex = 0;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,6 +47,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+/**
+ *  tabbar menthod to add child vc
+ *
+ *  @param childVC   a viewcontroller
+ *  @param title     title for tabbar
+ *  @param imageName imagename
+ */
 - (void)addChildVC:(UIViewController *)childVC withTitle:(NSString *)title withImageName:(NSString *)imageName {
     
     childVC.title = title;
@@ -46,7 +61,7 @@
     childVC.tabBarItem.selectedImage = [[UIImage imageNamed:[NSString stringWithFormat:@"%@_selected",imageName]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [childVC.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor grayColor]} forState:UIControlStateNormal];
     [childVC.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor orangeColor]} forState:UIControlStateSelected];
-    UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:childVC];
+    DJNavigationController *navigationController = [[DJNavigationController alloc]initWithRootViewController:childVC];
     [self addChildViewController:navigationController];
 }
 
