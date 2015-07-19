@@ -20,8 +20,8 @@
         [_buttonCenter setBackgroundImage:[UIImage imageNamed:@"tabbar_compose_button"] forState:UIControlStateNormal];
         [_buttonCenter setBackgroundImage:[UIImage imageNamed:@"tabbar_compose_button_highlighted"] forState:UIControlStateSelected];
         [_buttonCenter setImage:[UIImage imageNamed:@"tabbar_compose_icon_add"] forState:UIControlStateNormal];
-        _buttonCenter.layer.borderColor = [UIColor redColor].CGColor;
-        _buttonCenter.layer.borderWidth = 1.0;
+//        _buttonCenter.layer.borderColor = [UIColor redColor].CGColor;
+//        _buttonCenter.layer.borderWidth = 1.0;
         [_buttonCenter setFrame:CGRectMake(0, 0, 50, 50)];
     }
     return _buttonCenter;

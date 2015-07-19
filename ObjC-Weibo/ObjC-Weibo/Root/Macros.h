@@ -14,6 +14,7 @@
 #import "Macros.h"
 #import "UIView+EzFrame.h"
 #import "UIBarButtonItem+EzInit.h"
+#import "DJHomeVCTitleButton.h"
 
 //NavBar高度
 #define NavigationBar_HEIGHT 44

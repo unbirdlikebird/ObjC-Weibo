@@ -20,6 +20,12 @@
     
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonItemwithTarget:self withAction:@selector(friendsearch) withImageName:@"navigationbar_friendsearch"];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonItemwithTarget:self withAction:@selector(friendsearch) withImageName:@"navigationbar_pop"];
+    
+    DJHomeVCTitleButton *btnTitleView = [[DJHomeVCTitleButton alloc]init];
+    [btnTitleView setTitle:@"首页" forState:UIControlStateNormal];
+    [btnTitleView addTarget:self action:@selector(friendsearch) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.navigationItem.titleView = btnTitleView;
 }
 
 - (void)didReceiveMemoryWarning {

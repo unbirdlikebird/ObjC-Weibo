@@ -21,6 +21,9 @@
 		07604DAD1B594437003129FB /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07604DA51B594437003129FB /* ProfileViewController.m */; };
 		07604DAE1B594437003129FB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07604DA91B594437003129FB /* RootViewController.m */; };
 		07844FC41B5A1F3400F19901 /* UIView+EzFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 07844FC31B5A1F3400F19901 /* UIView+EzFrame.m */; };
+		07F1D12F1B5BBCF400DABF11 /* DJHomeVCTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F1D12E1B5BBCF400DABF11 /* DJHomeVCTitleButton.m */; };
+		07F1D1321B5BD9C300DABF11 /* DropdownView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F1D1311B5BD9C300DABF11 /* DropdownView.m */; };
+		07F1D13D1B5BDC6F00DABF11 /* NewFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F1D13C1B5BDC6F00DABF11 /* NewFeatureViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,12 @@
 		07844FC21B5A1F3400F19901 /* UIView+EzFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+EzFrame.h"; path = "Category/UIView+EzFrame.h"; sourceTree = "<group>"; };
 		07844FC31B5A1F3400F19901 /* UIView+EzFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+EzFrame.m"; path = "Category/UIView+EzFrame.m"; sourceTree = "<group>"; };
 		07844FC61B5A20CB00F19901 /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
+		07F1D12D1B5BBCF400DABF11 /* DJHomeVCTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJHomeVCTitleButton.h; sourceTree = "<group>"; };
+		07F1D12E1B5BBCF400DABF11 /* DJHomeVCTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJHomeVCTitleButton.m; sourceTree = "<group>"; };
+		07F1D1301B5BD9C300DABF11 /* DropdownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropdownView.h; sourceTree = "<group>"; };
+		07F1D1311B5BD9C300DABF11 /* DropdownView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropdownView.m; sourceTree = "<group>"; };
+		07F1D13B1B5BDC6F00DABF11 /* NewFeatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewFeatureViewController.h; path = Controllers/NewFeatureViewController.h; sourceTree = "<group>"; };
+		07F1D13C1B5BDC6F00DABF11 /* NewFeatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewFeatureViewController.m; path = Controllers/NewFeatureViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +99,10 @@
 				074146021B5A481900638844 /* DJNavigationController.m */,
 				074146031B5A481900638844 /* DJTabBar.h */,
 				074146041B5A481900638844 /* DJTabBar.m */,
+				07F1D12D1B5BBCF400DABF11 /* DJHomeVCTitleButton.h */,
+				07F1D12E1B5BBCF400DABF11 /* DJHomeVCTitleButton.m */,
+				07F1D1301B5BD9C300DABF11 /* DropdownView.h */,
+				07F1D1311B5BD9C300DABF11 /* DropdownView.m */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -116,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				07604DA61B594437003129FB /* Root */,
+				07F1D1361B5BDB0300DABF11 /* NewFeature */,
 				07604D9A1B594437003129FB /* Home */,
 				07604D9E1B594437003129FB /* Message */,
 				07604D961B594437003129FB /* Discover */,
@@ -254,6 +268,23 @@
 			name = Category;
 			sourceTree = "<group>";
 		};
+		07F1D1361B5BDB0300DABF11 /* NewFeature */ = {
+			isa = PBXGroup;
+			children = (
+				07F1D13E1B5BDC7300DABF11 /* Controllers */,
+			);
+			path = NewFeature;
+			sourceTree = "<group>";
+		};
+		07F1D13E1B5BDC7300DABF11 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				07F1D13B1B5BDC6F00DABF11 /* NewFeatureViewController.h */,
+				07F1D13C1B5BDC6F00DABF11 /* NewFeatureViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -355,10 +386,13 @@
 			files = (
 				07844FC41B5A1F3400F19901 /* UIView+EzFrame.m in Sources */,
 				074146051B5A481900638844 /* DJNavigationController.m in Sources */,
+				07F1D13D1B5BDC6F00DABF11 /* NewFeatureViewController.m in Sources */,
+				07F1D12F1B5BBCF400DABF11 /* DJHomeVCTitleButton.m in Sources */,
 				07604D631B594321003129FB /* AppDelegate.m in Sources */,
 				07604DAE1B594437003129FB /* RootViewController.m in Sources */,
 				07604DAC1B594437003129FB /* MessageViewController.m in Sources */,
 				074146061B5A481900638844 /* DJTabBar.m in Sources */,
+				07F1D1321B5BD9C300DABF11 /* DropdownView.m in Sources */,
 				07604DAA1B594437003129FB /* DiscoverViewController.m in Sources */,
 				07604D601B594321003129FB /* main.m in Sources */,
 				07604DAD1B594437003129FB /* ProfileViewController.m in Sources */,
