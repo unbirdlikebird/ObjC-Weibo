@@ -21,6 +21,7 @@
 		07604DAD1B594437003129FB /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07604DA51B594437003129FB /* ProfileViewController.m */; };
 		07604DAE1B594437003129FB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07604DA91B594437003129FB /* RootViewController.m */; };
 		07844FC41B5A1F3400F19901 /* UIView+EzFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 07844FC31B5A1F3400F19901 /* UIView+EzFrame.m */; };
+		078F75B51B7B971E0048C49F /* OAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 078F75B41B7B971E0048C49F /* OAuthViewController.m */; };
 		07F1D12F1B5BBCF400DABF11 /* DJHomeVCTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F1D12E1B5BBCF400DABF11 /* DJHomeVCTitleButton.m */; };
 		07F1D1321B5BD9C300DABF11 /* DropdownView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F1D1311B5BD9C300DABF11 /* DropdownView.m */; };
 		07F1D13D1B5BDC6F00DABF11 /* NewFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F1D13C1B5BDC6F00DABF11 /* NewFeatureViewController.m */; };
@@ -66,6 +67,9 @@
 		07844FC21B5A1F3400F19901 /* UIView+EzFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+EzFrame.h"; path = "Category/UIView+EzFrame.h"; sourceTree = "<group>"; };
 		07844FC31B5A1F3400F19901 /* UIView+EzFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+EzFrame.m"; path = "Category/UIView+EzFrame.m"; sourceTree = "<group>"; };
 		07844FC61B5A20CB00F19901 /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
+		078F75B21B7B962E0048C49F /* ObjC-Weibo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ObjC-Weibo.h"; sourceTree = "<group>"; };
+		078F75B31B7B971E0048C49F /* OAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OAuthViewController.h; path = "ObjC-Weibo/OAuth/Controllers/OAuthViewController.h"; sourceTree = SOURCE_ROOT; };
+		078F75B41B7B971E0048C49F /* OAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OAuthViewController.m; path = "ObjC-Weibo/OAuth/Controllers/OAuthViewController.m"; sourceTree = SOURCE_ROOT; };
 		07F1D12D1B5BBCF400DABF11 /* DJHomeVCTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJHomeVCTitleButton.h; sourceTree = "<group>"; };
 		07F1D12E1B5BBCF400DABF11 /* DJHomeVCTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJHomeVCTitleButton.m; sourceTree = "<group>"; };
 		07F1D1301B5BD9C300DABF11 /* DropdownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropdownView.h; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 			children = (
 				07604DA61B594437003129FB /* Root */,
 				07F1D1361B5BDB0300DABF11 /* NewFeature */,
+				078F75B61B7B972A0048C49F /* OAuth */,
 				07604D9A1B594437003129FB /* Home */,
 				07604D9E1B594437003129FB /* Message */,
 				07604D961B594437003129FB /* Discover */,
@@ -241,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				07844FC61B5A20CB00F19901 /* Macros.h */,
+				078F75B21B7B962E0048C49F /* ObjC-Weibo.h */,
 				07844FC51B5A1F3900F19901 /* Category */,
 				074146001B5A481900638844 /* Custom */,
 				07604DA71B594437003129FB /* Controllers */,
@@ -266,6 +272,16 @@
 				0741460C1B5A4C3800638844 /* UIBarButtonItem+EzInit.m */,
 			);
 			name = Category;
+			sourceTree = "<group>";
+		};
+		078F75B61B7B972A0048C49F /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				078F75B31B7B971E0048C49F /* OAuthViewController.h */,
+				078F75B41B7B971E0048C49F /* OAuthViewController.m */,
+			);
+			name = OAuth;
+			path = NewFeature;
 			sourceTree = "<group>";
 		};
 		07F1D1361B5BDB0300DABF11 /* NewFeature */ = {
@@ -393,6 +409,7 @@
 				07604DAC1B594437003129FB /* MessageViewController.m in Sources */,
 				074146061B5A481900638844 /* DJTabBar.m in Sources */,
 				07F1D1321B5BD9C300DABF11 /* DropdownView.m in Sources */,
+				078F75B51B7B971E0048C49F /* OAuthViewController.m in Sources */,
 				07604DAA1B594437003129FB /* DiscoverViewController.m in Sources */,
 				07604D601B594321003129FB /* main.m in Sources */,
 				07604DAD1B594437003129FB /* ProfileViewController.m in Sources */,

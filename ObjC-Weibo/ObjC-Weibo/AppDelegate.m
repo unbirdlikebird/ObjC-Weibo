@@ -7,8 +7,9 @@
 //
 
 #import "AppDelegate.h"
-
 #import "RootViewController.h"
+#import "NewFeatureViewController.h"
+#import "OAuthViewController.h"
 
 @interface AppDelegate ()
 
@@ -22,9 +23,20 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     self.window.backgroundColor = [UIColor whiteColor];
-        
-    self.window.rootViewController = [[RootViewController alloc] init];
     
+    self.window.rootViewController = [[OAuthViewController alloc] init];
+//    
+//    NSString *lastVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"CFBundleVersion"];
+//    NSString *currentVersion = [NSBundle mainBundle].infoDictionary[@"CFBundleVersion"];
+//
+//    if ([currentVersion isEqualToString:lastVersion]){
+//        self.window.rootViewController = [[RootViewController alloc] init];
+//    }else {
+//        self.window.rootViewController = [[NewFeatureViewController alloc] init];
+//        [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:@"CFBundleVersion"];
+//        [[NSUserDefaults standardUserDefaults] synchronize];
+//    }
+//
     [self.window makeKeyAndVisible];
 
     return YES;

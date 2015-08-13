@@ -13,6 +13,7 @@
 #import "ProfileViewController.h"
 #import "DJNavigationController.h"
 #import "DJTabBar.h"
+#import "Macros.h"
 
 @interface RootViewController ()
 
@@ -22,7 +23,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     
     HomeViewController *homeVC = [[HomeViewController alloc]init];
     [self addChildVC:homeVC withTitle:@"home" withImageName:@"tabbar_home"];
@@ -37,9 +37,8 @@
     [self addChildVC:profileVC withTitle:@"profile" withImageName:@"tabbar_profile"];
 
     [self setValue:[[DJTabBar alloc]init] forKey:@"tabBar"];
-    
-    self.selectedIndex = 0;
 
+    self.selectedIndex = 0;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,13 +46,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-/**
- *  tabbar menthod to add child vc
- *
- *  @param childVC   a viewcontroller
- *  @param title     title for tabbar
- *  @param imageName imagename
- */
+
 - (void)addChildVC:(UIViewController *)childVC withTitle:(NSString *)title withImageName:(NSString *)imageName {
     
     childVC.title = title;
