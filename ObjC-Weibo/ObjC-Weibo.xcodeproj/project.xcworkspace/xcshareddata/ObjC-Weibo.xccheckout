@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>EA54C841-3098-4528-B56F-959B40ADB89B</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>ObjC-Weibo</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>3C92F589C387D9FE1CE9C369E18103BDB9009C2F</key>
 		<string>https://github.com/unbirdlikebird/ObjC-Weibo.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ObjC-Weibo/ObjC-Weibo.xcodeproj/project.xcworkspace</string>
+	<string>ObjC-Weibo/ObjC-Weibo.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>3C92F589C387D9FE1CE9C369E18103BDB9009C2F</key>

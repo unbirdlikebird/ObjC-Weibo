@@ -26,4 +26,7 @@
 #define kOAuthUrl           @"https://api.weibo.com/oauth2/authorize"
 #define kRedirectUri        @"https://api.weibo.com/oauth2/default.html"
 #define kAccressTokenUrl    @"https://api.weibo.com/oauth2/access_token"
+#define kTimeline           @"https://api.weibo.com/2/statuses/public_timeline.json"
+#define kFriendsTimeline    @"https://api.weibo.com/2/statuses/friends_timeline.json"
+
 #endif

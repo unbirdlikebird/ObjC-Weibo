@@ -2,29 +2,28 @@
 #import "ObjC-Weibo.h"
 
 #pragma mark - Log
-//debug log
+//Debug log
 #ifdef DEBUG
-#   define DBGLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
-#   define DBGLogLogRect(rect)  DLog(@"%s x=%f, y=%f, w=%f, h=%f", #rect, rect.origin.x, rect.origin.y,rect.size.width, rect.size.height)
-#   define DBGLogLogPoint(pt) DLog(@"%s x=%f, y=%f", #pt, pt.x, pt.y)
-#   define DBGLogLogSize(size) DLog(@"%s w=%f, h=%f", #size, size.width, size.height)
-#   define DBGLogLogColor(_COLOR) DLog(@"%s h=%f, s=%f, v=%f", #_COLOR, _COLOR.hue, _COLOR.saturation, _COLOR.value)
-#   define DBGLogLogSuperViews(_VIEW) { for (UIView* view = _VIEW; view; view = view.superview) { GBLog(@"%@", view); } }
-#   define DBGLogLogSubViews(_VIEW) \
-{ for (UIView* view in [_VIEW subviews]) { GBLog(@"%@", view); } }
-#   else
-#   define DBGLogLog(...)
-#   define DBGLogLogRect(rect)
-#   define DBGLogLogPoint(pt)
-#   define DBGLogLogSize(size)
-#   define DBGLogLogColor(_COLOR)
-#   define DBGLogLogSuperViews(_VIEW)
-#   define DBGLogLogSubViews(_VIEW)
-#   endif
+#define DBGLog(fmt, ...)    NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#define DBGLogRect(rect)    DBGLog(@"%s x=%f, y=%f, w=%f, h=%f", #rect, rect.origin.x, rect.origin.y,rect.size.width, rect.size.height)
+#define DBGLogPoint(pt)     DBGLog(@"%s x=%f, y=%f", #pt, pt.x, pt.y)
+#define DBGLogSize(size)    DBGLog(@"%s w=%f, h=%f", #size, size.width, size.height)
+#define DBGLogColor(_COLOR) DBGLog(@"%s h=%f, s=%f, v=%f", #_COLOR, _COLOR.hue, _COLOR.saturation, _COLOR.value)
+#define DBGLogSuperViews(_VIEW) { for (UIView* view = _VIEW; view; view = view.superview) { GBLog(@"%@", view); } }
+#define DBGLogSubViews(_VIEW) { for (UIView* view in [_VIEW subviews]) { DBGLog(@"%@", view); } }
+#else
+#define DBGLogLog(...)
+#define DBGLogLogRect(rect)
+#define DBGLogLogPoint(pt)
+#define DBGLogLogSize(size)
+#define DBGLogLogColor(_COLOR)
+#define DBGLogLogSuperViews(_VIEW)
+#define DBGLogLogSubViews(_VIEW)
+#endif
 
-//log with UIAlertView
+//Log with UIAlertView
 #ifdef DEBUG
-#   define AlertLog(fmt, ...)  { UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%s\n [Line %d] ", __PRETTY_FUNCTION__, __LINE__] message:[NSString stringWithFormat:fmt, ##__VA_ARGS__]  delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil]; [alert show]; }
+#define AlertLog(fmt, ...)  { UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%s\n [Line %d] ", __PRETTY_FUNCTION__, __LINE__] message:[NSString stringWithFormat:fmt, ##__VA_ARGS__]  delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil]; [alert show]; }
 #else
 #   define AlertLog(...)
 #endif
@@ -46,11 +45,11 @@
 #define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
 #define CurrentSystemVersion ([[UIDevice currentDevice] systemVersion])
 #define CurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0])
-#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
-#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
-#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
-#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
-#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+#define SYSTEM_VERSION_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
 //Functions
 #pragma mark - Some Functions
