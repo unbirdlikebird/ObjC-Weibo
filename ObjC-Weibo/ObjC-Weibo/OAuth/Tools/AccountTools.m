@@ -6,10 +6,9 @@
 //  Copyright (c) 2015 Dianyi Jiang. All rights reserved.
 //
 #define AccountFilePath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:kAccountFileName]
+#define kAccountFileName    @"accountInfo.archive"
 
 #import "AccountTools.h"
-#import "Macros.h"
-#import "Account.h"
 
 @implementation AccountTools
 

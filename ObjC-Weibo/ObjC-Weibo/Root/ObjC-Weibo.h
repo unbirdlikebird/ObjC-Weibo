@@ -26,5 +26,4 @@
 #define kOAuthUrl           @"https://api.weibo.com/oauth2/authorize"
 #define kRedirectUri        @"https://api.weibo.com/oauth2/default.html"
 #define kAccressTokenUrl    @"https://api.weibo.com/oauth2/access_token"
-#define kAccountFileName    @"accountInfo.archive"
 #endif

@@ -8,7 +8,6 @@
 
 #import "OAuthViewController.h"
 #import "Macros.h"
-#import "Account.h"
 #import "AccountTools.h"
 #import "UIWindow+Extension.h"
 

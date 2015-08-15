@@ -72,6 +72,7 @@
 		074146051B5A481900638844 /* DJNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 074146021B5A481900638844 /* DJNavigationController.m */; };
 		074146061B5A481900638844 /* DJTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 074146041B5A481900638844 /* DJTabBar.m */; };
 		0741460D1B5A4C3800638844 /* UIBarButtonItem+EzInit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0741460C1B5A4C3800638844 /* UIBarButtonItem+EzInit.m */; };
+		074D72251B7EF4E900C1D101 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 074D72241B7EF4E900C1D101 /* Foundation+Log.m */; };
 		07604D601B594321003129FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 07604D5F1B594321003129FB /* main.m */; };
 		07604D631B594321003129FB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 07604D621B594321003129FB /* AppDelegate.m */; };
 		07604D6B1B594321003129FB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07604D6A1B594321003129FB /* Images.xcassets */; };
@@ -242,6 +243,7 @@
 		074146041B5A481900638844 /* DJTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJTabBar.m; sourceTree = "<group>"; };
 		0741460B1B5A4C3800638844 /* UIBarButtonItem+EzInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIBarButtonItem+EzInit.h"; path = "Category/UIBarButtonItem+EzInit.h"; sourceTree = "<group>"; };
 		0741460C1B5A4C3800638844 /* UIBarButtonItem+EzInit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIBarButtonItem+EzInit.m"; path = "Category/UIBarButtonItem+EzInit.m"; sourceTree = "<group>"; };
+		074D72241B7EF4E900C1D101 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		07604D5A1B594321003129FB /* ObjC-Weibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ObjC-Weibo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07604D5E1B594321003129FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07604D5F1B594321003129FB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -751,6 +753,7 @@
 		07844FC51B5A1F3900F19901 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				074D72241B7EF4E900C1D101 /* Foundation+Log.m */,
 				07844FC21B5A1F3400F19901 /* UIView+EzFrame.h */,
 				07844FC31B5A1F3400F19901 /* UIView+EzFrame.m */,
 				0741460B1B5A4C3800638844 /* UIBarButtonItem+EzInit.h */,
@@ -985,6 +988,7 @@
 				07604D601B594321003129FB /* main.m in Sources */,
 				07604DAD1B594437003129FB /* ProfileViewController.m in Sources */,
 				070608131B7E14F200B715E9 /* AFSecurityPolicy.m in Sources */,
+				074D72251B7EF4E900C1D101 /* Foundation+Log.m in Sources */,
 				07604DAB1B594437003129FB /* HomeViewController.m in Sources */,
 				0706081A1B7E14F200B715E9 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				070608101B7E14F200B715E9 /* AFHTTPRequestOperationManager.m in Sources */,
