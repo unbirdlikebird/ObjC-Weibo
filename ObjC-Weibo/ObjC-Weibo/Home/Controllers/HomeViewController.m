@@ -39,7 +39,7 @@
 
 - (void)friendsearch{
 
-    DLog(@"friend search");
+    DBGLog(@"friend search");
 }
 
 @end

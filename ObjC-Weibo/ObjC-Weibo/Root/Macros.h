@@ -4,31 +4,29 @@
 #pragma mark - Log
 //debug log
 #ifdef DEBUG
-#   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
-#   define DLogRect(rect)  DLog(@"%s x=%f, y=%f, w=%f, h=%f", #rect, rect.origin.x, rect.origin.y,rect.size.width, rect.size.height)
-#   define DLogPoint(pt) DLog(@"%s x=%f, y=%f", #pt, pt.x, pt.y)
-#   define DLogSize(size) DLog(@"%s w=%f, h=%f", #size, size.width, size.height)
-#   define DLogColor(_COLOR) DLog(@"%s h=%f, s=%f, v=%f", #_COLOR, _COLOR.hue, _COLOR.saturation, _COLOR.value)
-#   define DLogSuperViews(_VIEW) { for (UIView* view = _VIEW; view; view = view.superview) { GBLog(@"%@", view); } }
-#   define DLogSubViews(_VIEW) \
+#   define DBGLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#   define DBGLogLogRect(rect)  DLog(@"%s x=%f, y=%f, w=%f, h=%f", #rect, rect.origin.x, rect.origin.y,rect.size.width, rect.size.height)
+#   define DBGLogLogPoint(pt) DLog(@"%s x=%f, y=%f", #pt, pt.x, pt.y)
+#   define DBGLogLogSize(size) DLog(@"%s w=%f, h=%f", #size, size.width, size.height)
+#   define DBGLogLogColor(_COLOR) DLog(@"%s h=%f, s=%f, v=%f", #_COLOR, _COLOR.hue, _COLOR.saturation, _COLOR.value)
+#   define DBGLogLogSuperViews(_VIEW) { for (UIView* view = _VIEW; view; view = view.superview) { GBLog(@"%@", view); } }
+#   define DBGLogLogSubViews(_VIEW) \
 { for (UIView* view in [_VIEW subviews]) { GBLog(@"%@", view); } }
 #   else
-#   define DLog(...)
-#   define DLogRect(rect)
-#   define DLogPoint(pt)
-#   define DLogSize(size)
-#   define DLogColor(_COLOR)
-#   define DLogSuperViews(_VIEW)
-#   define DLogSubViews(_VIEW)
+#   define DBGLogLog(...)
+#   define DBGLogLogRect(rect)
+#   define DBGLogLogPoint(pt)
+#   define DBGLogLogSize(size)
+#   define DBGLogLogColor(_COLOR)
+#   define DBGLogLogSuperViews(_VIEW)
+#   define DBGLogLogSubViews(_VIEW)
 #   endif
-
-#define ALog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
 
 //log with UIAlertView
 #ifdef DEBUG
-#   define ULog(fmt, ...)  { UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%s\n [Line %d] ", __PRETTY_FUNCTION__, __LINE__] message:[NSString stringWithFormat:fmt, ##__VA_ARGS__]  delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil]; [alert show]; }
+#   define AlertLog(fmt, ...)  { UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%s\n [Line %d] ", __PRETTY_FUNCTION__, __LINE__] message:[NSString stringWithFormat:fmt, ##__VA_ARGS__]  delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil]; [alert show]; }
 #else
-#   define ULog(...)
+#   define AlertLog(...)
 #endif
 //mark
 #define MARK    NSLog(@"\nMARK: %s, %d", __PRETTY_FUNCTION__, __LINE__)
@@ -39,7 +37,7 @@
 #define isRetina ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
 #define isPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 #define isSimulator (NSNotFound != [[[UIDevice currentDevice] model] rangeOfString:@"Simulator"].location)
-#define NavigationBar_HEIGHT 44
+#define NAVIGTIONBAR_HEIGHT 44
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 
@@ -56,7 +54,7 @@
 
 //Functions
 #pragma mark - Some Functions
-#define USER_DEFAULT [NSUserDefaults standardUserDefaults];
+#define USER_DEFAULT                [NSUserDefaults standardUserDefaults];
 #define NOTIFICATION_CENTER         [NSNotificationCenter defaultCenter]
 #define IMAGE_CACHE                 [SDImageCache sharedImageCache]
 #define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
