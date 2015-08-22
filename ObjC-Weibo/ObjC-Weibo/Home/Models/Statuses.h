@@ -6,10 +6,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
 @class User;
 
-@interface Statuses : NSObject <NSCoding, NSCopying>
+@interface Statuses : NSObject
 
 @property (nonatomic, assign) double   attitudesCount;
 @property (nonatomic, strong) NSString *source;

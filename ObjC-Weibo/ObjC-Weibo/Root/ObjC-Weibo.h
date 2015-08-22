@@ -20,6 +20,9 @@
 #import "PureLayout.h"
 #import "UIImageView+WebCache.h"
 #import "MBProgressHUD+EzHUD.h"
+#import "MJRefresh.h"
+#import "MJExtension.h"
+
 
 #define kAppKey             @"1927950725"
 #define kAppSecret          @"24c0abe5a3599c517a70073e319012c7"
@@ -28,5 +31,5 @@
 #define kAccressTokenUrl    @"https://api.weibo.com/oauth2/access_token"
 #define kTimeline           @"https://api.weibo.com/2/statuses/public_timeline.json"
 #define kFriendsTimeline    @"https://api.weibo.com/2/statuses/friends_timeline.json"
-
+#define kUserInfoUrl        @"https://api.weibo.com/2/users/show.json"
 #endif

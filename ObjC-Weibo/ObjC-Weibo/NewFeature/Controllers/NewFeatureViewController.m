@@ -16,6 +16,8 @@
 
 @implementation NewFeatureViewController
 
+static const NSInteger NewFeatureCount = 4;
+
 #pragma mark - UIViewController Lifecycle
 
 - (void)viewDidLoad {
@@ -24,27 +26,10 @@
     [self layoutPageControl];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-static const NSInteger NewFeatureCount = 4;
 
 #pragma mark - Layout NewFeature
 

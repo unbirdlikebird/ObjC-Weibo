@@ -9,8 +9,12 @@
 #import "HomeViewController.h"
 #import "Macros.h"
 #import "AccountTools.h"
+#import "User.h"
+#import "Statuses.h"
 
 @interface HomeViewController ()
+@property (nonatomic, strong) NSArray *statuses;
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
@@ -22,6 +26,7 @@
     [super viewDidLoad];
     [self setupNavigationItem];
     [self setupUserInfo];
+    [self requestTimeline];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -48,23 +53,50 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     self.view.backgroundColor = RGBRANDOM;
 }
+
 #pragma mark - private
 
 - (void)setupUserInfo {
-    
+
     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    mgr.responseSerializer = [AFJSONResponseSerializer serializer];
+//    mgr.responseSerializer = [AFJSONResponseSerializer serializer];
     
     Account *account = [AccountTools account];
 
     params[@"access_token"] = account.access_token;
     params[@"uid"] = account.uid;
     
-    [mgr GET:kTimeline parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [mgr GET:kUserInfoUrl parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+        
+        User *user = [User objectWithKeyValues:responseObject];
+        UIButton *button = (UIButton *)self.navigationItem.titleView;
+        [button setTitle:user.name forState:UIControlStateNormal];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 
-        DBGLog(@"%@", operation.request.URL);
-        DBGLog(@"%@", responseObject);
+        DBGLog(@"%@", error);
+    }];
+}
+
+- (void)requestTimeline {
+    
+    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    //    mgr.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    Account *account = [AccountTools account];
+    
+    params[@"access_token"] = account.access_token;
+    params[@"uid"] = account.uid;
+    
+    [mgr GET:kTimeline parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+
+        AlertLog(@"%@", responseObject);
+        
+        self.statuses = [Statuses objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
+        
+        
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -79,9 +111,9 @@
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonItemwithTarget:self withAction:@selector(friendsearch) withImageName:@"navigationbar_pop"];
     
     DJHomeVCTitleButton *btnTitleView = [[DJHomeVCTitleButton alloc]init];
-    [btnTitleView setTitle:@"首页" forState:UIControlStateNormal];
+//    [btnTitleView setTitle:@"首页" forState:UIControlStateNormal];
     [btnTitleView addTarget:self action:@selector(friendsearch) forControlEvents:UIControlEventTouchUpInside];
-    
+
     self.navigationItem.titleView = btnTitleView;
 }
 
@@ -89,5 +121,8 @@
 
     DBGLog(@"friend search");
 }
+
+#pragma mark - data init 
+
 
 @end
