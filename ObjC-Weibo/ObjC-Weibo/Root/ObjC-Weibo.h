@@ -22,7 +22,7 @@
 #import "MBProgressHUD+EzHUD.h"
 #import "MJRefresh.h"
 #import "MJExtension.h"
-
+#import "UIImageView+WebCache.h"
 
 #define kAppKey             @"1927950725"
 #define kAppSecret          @"24c0abe5a3599c517a70073e319012c7"

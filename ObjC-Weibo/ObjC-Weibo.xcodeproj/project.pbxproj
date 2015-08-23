@@ -42,7 +42,7 @@
 		070608551B7E14F200B715E9 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0706080A1B7E14F200B715E9 /* UIImageView+HighlightedWebCache.m */; };
 		070608561B7E14F200B715E9 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0706080C1B7E14F200B715E9 /* UIImageView+WebCache.m */; };
 		070608571B7E14F200B715E9 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0706080E1B7E14F200B715E9 /* UIView+WebCacheOperation.m */; };
-		0726D55F1B7F29F000B928C7 /* Statuses.m in Sources */ = {isa = PBXBuildFile; fileRef = 0726D55C1B7F29F000B928C7 /* Statuses.m */; };
+		0726D55F1B7F29F000B928C7 /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 0726D55C1B7F29F000B928C7 /* Status.m */; };
 		0726D5601B7F29F000B928C7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0726D55E1B7F29F000B928C7 /* User.m */; };
 		0726D5771B7F303600B928C7 /* MJExtensionConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 0726D5641B7F303600B928C7 /* MJExtensionConst.m */; };
 		0726D5781B7F303600B928C7 /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0726D5661B7F303600B928C7 /* MJFoundation.m */; };
@@ -185,8 +185,8 @@
 		0706080C1B7E14F200B715E9 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		0706080D1B7E14F200B715E9 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		0706080E1B7E14F200B715E9 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
-		0726D55B1B7F29F000B928C7 /* Statuses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Statuses.h; sourceTree = "<group>"; };
-		0726D55C1B7F29F000B928C7 /* Statuses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Statuses.m; sourceTree = "<group>"; };
+		0726D55B1B7F29F000B928C7 /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
+		0726D55C1B7F29F000B928C7 /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
 		0726D55D1B7F29F000B928C7 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		0726D55E1B7F29F000B928C7 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		0726D5621B7F303600B928C7 /* MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtension.h; sourceTree = "<group>"; };
@@ -462,8 +462,8 @@
 		0726D55A1B7F29F000B928C7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0726D55B1B7F29F000B928C7 /* Statuses.h */,
-				0726D55C1B7F29F000B928C7 /* Statuses.m */,
+				0726D55B1B7F29F000B928C7 /* Status.h */,
+				0726D55C1B7F29F000B928C7 /* Status.m */,
 				0726D55D1B7F29F000B928C7 /* User.h */,
 				0726D55E1B7F29F000B928C7 /* User.m */,
 			);
@@ -994,7 +994,7 @@
 				07B5FBDF1B7E45B900C6603C /* UIWindow+Extension.m in Sources */,
 				0706084D1B7E14F200B715E9 /* SDWebImageDecoder.m in Sources */,
 				0726D5AE1B7F30A600B928C7 /* MJRefreshAutoFooter.m in Sources */,
-				0726D55F1B7F29F000B928C7 /* Statuses.m in Sources */,
+				0726D55F1B7F29F000B928C7 /* Status.m in Sources */,
 				078F75B51B7B971E0048C49F /* OAuthViewController.m in Sources */,
 				07604DAA1B594437003129FB /* DiscoverViewController.m in Sources */,
 				07604D601B594321003129FB /* main.m in Sources */,

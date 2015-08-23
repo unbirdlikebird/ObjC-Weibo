@@ -5,8 +5,8 @@
 //  Copyright (c) 2015 Dalian 2tSoft. All rights reserved.
 //
 
-#import "Statuses.h"
+#import "Status.h"
 
-@implementation Statuses
+@implementation Status
 
 @end
