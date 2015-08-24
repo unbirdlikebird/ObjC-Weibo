@@ -11,7 +11,7 @@
 @implementation User
 
 + (NSDictionary *)replacedKeyFromPropertyName {
-    return @{@"profileImageUrl":@"profile_image_url"};
+    return @{@"classProperty":@"class", @"userIdentifier":@"id", @"userDescription":@"description" };
 }
 
 @end

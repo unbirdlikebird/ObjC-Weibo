@@ -9,8 +9,7 @@
 #ifndef ObjC_Weibo_Weibo_h
 #define ObjC_Weibo_Weibo_h
 
-#import "UIBarButtonItem+EzInit.h"
-#import "UIView+EzFrame.h"
+#import "Categories.h"
 #import "DJTabBar.h"
 #import "DJNavigationController.h"
 #import "DropdownView.h"
@@ -23,13 +22,6 @@
 #import "MJRefresh.h"
 #import "MJExtension.h"
 #import "UIImageView+WebCache.h"
+#import "PureLayout.h"
 
-#define kAppKey             @"1927950725"
-#define kAppSecret          @"24c0abe5a3599c517a70073e319012c7"
-#define kOAuthUrl           @"https://api.weibo.com/oauth2/authorize"
-#define kRedirectUri        @"https://api.weibo.com/oauth2/default.html"
-#define kAccressTokenUrl    @"https://api.weibo.com/oauth2/access_token"
-#define kTimeline           @"https://api.weibo.com/2/statuses/public_timeline.json"
-#define kFriendsTimeline    @"https://api.weibo.com/2/statuses/friends_timeline.json"
-#define kUserInfoUrl        @"https://api.weibo.com/2/users/show.json"
 #endif

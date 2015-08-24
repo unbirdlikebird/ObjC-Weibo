@@ -1,5 +1,6 @@
 
 #import "ObjC-Weibo.h"
+#import "Constants.h"
 
 #pragma mark - Log
 //Debug log

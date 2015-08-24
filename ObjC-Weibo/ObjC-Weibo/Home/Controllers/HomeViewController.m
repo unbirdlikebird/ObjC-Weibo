@@ -29,6 +29,8 @@
     [self setupNavigationItem];
     [self setupUserInfo];
     [self setupRefresh];
+    
+//    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(setupUnreadMessageCount) userInfo:nil repeats:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -52,11 +54,20 @@
     DBGLog(@"didReceiveMemoryWarning");
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    self.view.backgroundColor = RGBRANDOM;
-}
-
 #pragma mark - private
+
+- (void)setupUnreadMessageCount {
+    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"access_token"] = [AccountTools account].access_token;
+    params[@"id"] = [AccountTools account].uid;
+    
+    [mgr GET:kUnreadMsgCount parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        DBGLog(@"%@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+}
 
 - (void)setupRefresh {
     
@@ -68,7 +79,6 @@
 }
 
 - (void)pageRefresh:(UIRefreshControl *)sender {
-    [sender endRefreshing];
     
     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -82,8 +92,12 @@
     if (status) {
         params[@"since_id"] = status.idstr;
     }
+    
     [mgr GET:kTimeline parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
-        DBGLog(@"%@", operation.request.URL);
+        
+        if ([sender isRefreshing]) {
+            [sender endRefreshing];
+        }
         NSArray *newStatuses = [Status objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
         NSIndexSet *newStatuesLocation = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, newStatuses.count)];
         [self.statuses insertObjects:newStatuses atIndexes:newStatuesLocation];
@@ -93,7 +107,9 @@
         [self showNewStatusCount:newStatuses.count];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [sender endRefreshing];
+        if ([sender isRefreshing]) {
+            [sender endRefreshing];
+        }
         DBGLog(@"%@", error);
     }];
 }
@@ -126,7 +142,6 @@
         [label removeFromSuperview];
     }];
 }
-
 
 - (void)setupUserInfo {
 
@@ -197,11 +212,10 @@
 - (void)configureCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     Status *status = self.statuses[indexPath.row];
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:status.user.profileImageUrl] placeholderImage:[UIImage imageNamed:@"compose_pic_add_highlighted"]];
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:status.user.profile_image_url] placeholderImage:[UIImage imageNamed:@"compose_pic_add_highlighted"]];
     cell.textLabel.text = status.user.name;
     cell.detailTextLabel.text = status.text;
 }
-
 
 #pragma mark - data init
 
@@ -220,6 +234,5 @@
     }
     return _statuses;
 }
-
 
 @end
