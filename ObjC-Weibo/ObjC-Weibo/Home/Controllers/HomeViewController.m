@@ -11,6 +11,7 @@
 #import "AccountTools.h"
 #import "User.h"
 #import "Status.h"
+#import "HomeCell.h"
 
 @interface HomeViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray *statuses;
@@ -198,10 +199,10 @@
     
     static NSString *reuseIdentifier = @"reuseIdentifier";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
     
     if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
+        cell = [[HomeCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     }
     
     [self configureCell:cell forRowAtIndexPath:indexPath];
@@ -209,12 +210,15 @@
     return cell;
 }
 
-- (void)configureCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)configureCell:(HomeCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     Status *status = self.statuses[indexPath.row];
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:status.user.profile_image_url] placeholderImage:[UIImage imageNamed:@"compose_pic_add_highlighted"]];
-    cell.textLabel.text = status.user.name;
-    cell.detailTextLabel.text = status.text;
+    [cell.imageViewProfile sd_setImageWithURL:[NSURL URLWithString:status.user.profile_image_url] placeholderImage:[UIImage imageNamed:@"avatar_default"]];
+    cell.labelUserName.text = status.user.name;
+    cell.labelContent.text = status.text;
+//    cell.labelTime.text = status.created_at;
+    [cell setNeedsUpdateConstraints];
+    [cell updateConstraintsIfNeeded];
 }
 
 #pragma mark - data init
@@ -224,6 +228,8 @@
         _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.estimatedRowHeight = 100;
+        _tableView.rowHeight = UITableViewAutomaticDimension;
     }
     return _tableView;
 }

@@ -10,4 +10,11 @@
 
 @interface HomeCell : UITableViewCell
 
+@property (nonatomic, weak) UIImageView *imageViewProfile;
+@property (nonatomic, weak) UIImageView *imageViewVIP;
+@property (nonatomic, weak) UILabel *labelUserName;
+@property (nonatomic, weak) UILabel *labelContent;
+@property (nonatomic, weak) UILabel *labelTime;
+
+
 @end

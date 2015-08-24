@@ -17,7 +17,9 @@ extern NSString *const kTimeline;
 extern NSString *const kFriendsTimeline;
 extern NSString *const kUserInfoUrl;
 extern NSString *const kUnreadMsgCount;
-
+extern float     const kInset;
+extern float     const kMinWidth;
+extern float     const kMaxWidth;
 
 @interface Constants : NSObject
 
