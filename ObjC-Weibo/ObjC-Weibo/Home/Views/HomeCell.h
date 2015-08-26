@@ -7,14 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class StatusFrame;
 
 @interface HomeCell : UITableViewCell
 
-@property (nonatomic, weak) UIImageView *imageViewProfile;
-@property (nonatomic, weak) UIImageView *imageViewVIP;
-@property (nonatomic, weak) UILabel *labelUserName;
-@property (nonatomic, weak) UILabel *labelContent;
-@property (nonatomic, weak) UILabel *labelTime;
-
-
++ (instancetype)cellWithTableView:(UITableView *)tableView;
+@property (nonatomic, strong)  StatusFrame *statusFrame;
+ 
 @end
+  

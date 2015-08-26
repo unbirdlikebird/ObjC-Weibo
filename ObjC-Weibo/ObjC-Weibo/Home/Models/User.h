@@ -26,7 +26,6 @@
 @property (nonatomic, assign) double   followers_count;
 @property (nonatomic, copy  ) NSString *verified_contact_mobile;
 @property (nonatomic, copy  ) NSString *location;
-@property (nonatomic, assign) double   mbrank;
 @property (nonatomic, copy  ) NSString *avatar_large;
 @property (nonatomic, assign) double   star;
 @property (nonatomic, copy  ) NSString *verified_trade;
@@ -42,6 +41,7 @@
 @property (nonatomic, copy  ) NSString *name;
 @property (nonatomic, assign) double   friends_count;
 @property (nonatomic, assign) double   mbtype;
+@property (nonatomic, assign) int       mbrank;
 @property (nonatomic, assign) double   block_app;
 @property (nonatomic, copy  ) NSString *avatar_hd;
 @property (nonatomic, assign) double   credit_score;
@@ -66,5 +66,7 @@
 @property (nonatomic, copy  ) NSString *lang;
 @property (nonatomic, assign) double   ptype;
 @property (nonatomic, assign) BOOL     following;
+
+@property (nonatomic, assign, getter=isVip) BOOL vip;
 
 @end

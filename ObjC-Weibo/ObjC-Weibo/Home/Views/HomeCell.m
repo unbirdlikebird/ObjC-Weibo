@@ -8,126 +8,107 @@
 
 #import "HomeCell.h"
 #import "Macros.h"
+#import "StatusFrame.h"
+#import "User.h"
 
 @interface HomeCell ()
-@property (nonatomic, assign) BOOL didUpdateConstraints;
-@property (nonatomic, weak) UIView *originalView;
-@property (nonatomic, weak) UIView *functionView;
 
-
-
+@property (nonatomic, weak) UIView *viewOriginal;
+@property (nonatomic, weak) UIImageView *imageViewProfile;
+@property (nonatomic, weak) UILabel *labelName;
+@property (nonatomic, weak) UIImageView *imageViewVipIcon;
+@property (nonatomic, weak) UILabel *labelTime;
+@property (nonatomic, weak) UILabel *labelSource;
+@property (nonatomic, weak) UILabel *labelContent;
 
 @end
 
 @implementation HomeCell
 
++ (instancetype)cellWithTableView:(UITableView *)tableView {
+    
+    static NSString *reuseIdentifier = @"reuseIdentifier";
+    HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    if (!cell) {
+        cell = [[HomeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+    }
+    return cell;
+}
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        UIView *originalView = [UIView newAutoLayoutView];
-        [self.contentView addSubview:originalView];
-        self.originalView = originalView;
+
+        UIView *viewOriginal = [[UIView alloc] init];
+        [self.contentView addSubview:viewOriginal];
+        self.viewOriginal = viewOriginal;
         
-        UIView *functionView = [UIView newAutoLayoutView];
-        functionView.backgroundColor = [UIColor cyanColor];
-        functionView.height = 20;
-        [self.contentView addSubview:functionView];
-        self.functionView = functionView;
-        
-        UIImageView *imageViewProfile = [UIImageView newAutoLayoutView];
-        [originalView addSubview:imageViewProfile];
+        UIImageView *imageViewProfile = [[UIImageView alloc] init];
+        [self.contentView addSubview:imageViewProfile];
         self.imageViewProfile = imageViewProfile;
         
-        UIImageView *imageViewVIP = [UIImageView newAutoLayoutView];
-        [originalView addSubview:imageViewVIP];
-        self.imageViewVIP = imageViewVIP;
+        UILabel *labelName = [[UILabel alloc] init];
+        labelName.font = StatusCellNameFont;
+        [self.contentView addSubview:labelName];
+        self.labelName = labelName;
         
-        UILabel *labelUserName = [UILabel newAutoLayoutView];
-        [originalView addSubview:labelUserName];
-        self.labelUserName = labelUserName;
+        UIImageView *imageViewVipIcon = [[UIImageView alloc] init];
+        imageViewVipIcon.contentMode = UIViewContentModeCenter;
+        [self.contentView addSubview:imageViewVipIcon];
+        self.imageViewVipIcon = imageViewVipIcon;
         
-        UILabel *labelContent = [UILabel newAutoLayoutView];
+        UILabel *labelTime = [[UILabel alloc] init];
+        labelTime.font = StatusCellTimeFont;
+        [self.contentView addSubview:labelTime];
+        self.labelTime = labelTime;
+        
+        UILabel *labelSource = [[UILabel alloc] init];
+        [self.contentView addSubview:labelSource];
+        self.labelSource = labelSource;
+        
+        UILabel *labelContent = [[UILabel alloc] init];
+        labelContent.font = StatusCellNameFont;
+        labelContent.preferredMaxLayoutWidth = SCREEN_WIDTH - kInset * 4;
         labelContent.numberOfLines = 0;
-        [originalView addSubview:labelContent];
+        [self.contentView addSubview:labelContent];
         self.labelContent = labelContent;
         
-        UILabel *labelTime = [UILabel newAutoLayoutView];
-        [originalView addSubview:labelTime];
-        self.labelTime = labelTime;
-
     }
     return self;
 }
 
-- (void)updateConstraints {
-    if (!self.didUpdateConstraints) {
-        [self layoutUIElements];
-        self.didUpdateConstraints = YES;
+- (void)setStatusFrame:(StatusFrame *)statusFrame {
+    
+    _statusFrame = statusFrame;
+    Status *status = statusFrame.status;
+    User *user = status.user;
+    
+    self.viewOriginal.frame = statusFrame.viewOriginalFrame;
+    
+    self.imageViewProfile.frame = statusFrame.imageViewProfileFrame;
+    [self.imageViewProfile sd_setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:[UIImage imageNamed:@"avatar_default"]];
+  
+    self.labelName.text = user.name;
+    self.labelName.frame = statusFrame.labelNameFrame;
+
+    if (user.isVip) {
+        self.imageViewVipIcon.hidden = NO;
+        self.imageViewVipIcon.frame = statusFrame.imageViewVipIconFrame;
+        self.imageViewVipIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"common_icon_membership_level%d", user.mbrank]];
+        self.labelName.textColor = [UIColor orangeColor];
+    } else {
+        self.imageViewVipIcon.hidden = YES;
+        self.labelName.textColor = [UIColor blackColor];
     }
-    [super updateConstraints];
-}
 
-- (void)layoutUIElements {
-    /**
-     *  original view
-     */
-    [UIView autoSetPriority:UILayoutPriorityRequired forConstraints:^{
-        [self.originalView autoSetContentCompressionResistancePriorityForAxis:ALAxisVertical];
-    }];
-    [self.originalView autoPinEdgeToSuperviewEdge:ALEdgeTop];
-    [self.originalView autoPinEdgeToSuperviewEdge:ALEdgeLeading];
-//    [self.originalView autoPinEdgeToSuperviewEdge:ALEdgeBottom];
-    [self.originalView autoPinEdgeToSuperviewEdge:ALEdgeTrailing];
-    /**
-     *  imageview
-     */
-    [self.imageViewProfile autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:kInset];
-    [self.imageViewProfile autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:kInset];
-    [self.imageViewProfile autoSetDimension:ALDimensionWidth toSize:50];
-    /**
-     *  name label
-     */
-    [UIView autoSetPriority:UILayoutPriorityRequired forConstraints:^{
-        [self.labelUserName autoSetContentHuggingPriorityForAxis:ALAxisHorizontal];
-    }];
-    [self.labelUserName autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:kInset];
-    [self.labelUserName autoPinEdge:ALEdgeLeading toEdge:ALEdgeTrailing ofView:self.imageViewProfile withOffset:kInset];
-    [self.labelUserName autoSetDimension:ALDimensionWidth toSize:kMaxWidth relation:NSLayoutRelationLessThanOrEqual];
-    
-    [self.labelUserName autoSetDimension:ALDimensionHeight toSize:20.0f];
-    /**
-     *  time label
-     */
-    [UIView autoSetPriority:UILayoutPriorityRequired forConstraints:^{
-        [self.labelTime autoSetContentHuggingPriorityForAxis:ALAxisHorizontal];
-    }];
-    [self.labelTime autoPinEdge:ALEdgeLeading toEdge:ALEdgeTrailing ofView:self.imageViewProfile withOffset:kInset];
-    [self.labelTime autoPinEdge:ALEdgeBottom toEdge:ALEdgeBottom ofView:self.imageViewProfile];
-    [self.labelTime autoSetDimension:ALDimensionWidth toSize:150 relation:NSLayoutRelationLessThanOrEqual];
-    
-    /**
-     *  text label
-     */
-    [UIView autoSetPriority:UILayoutPriorityRequired forConstraints:^{
-
-        [self.labelContent autoSetContentCompressionResistancePriorityForAxis:ALAxisVertical];
-    }];
-    [self.labelContent autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.imageViewProfile withOffset:kInset];
-    [self.labelContent autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:kInset];
-    [self.labelContent autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:kInset];
-    [self.labelContent autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:kInset];
-    /**
-     *  function view
-     */
-    [UIView autoSetPriority:UILayoutPriorityRequired forConstraints:^{
-        [self.functionView autoSetContentCompressionResistancePriorityForAxis:ALAxisVertical];
-    }];
-    [self.functionView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.originalView];
-    [self.functionView autoSetDimension:ALDimensionHeight toSize:30.0f];
-    [self.functionView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:kInset];
-    [self.functionView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:kInset];
-    [self.functionView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:kInset];
-    
+    self.labelTime.text = user.created_at;
+    self.labelTime.frame = statusFrame.labelTimeFrame;
+//
+//    self.labelSource.text = status.source;
+//    self.labelSource.frame = statusFrame.labelSourceFrame;
+//    
+    self.labelContent.text = status.text;
+    self.labelContent.frame = statusFrame.labelContentFrame;
 
 }
 

@@ -24,4 +24,7 @@
 #import "UIImageView+WebCache.h"
 #import "PureLayout.h"
 
+#define StatusCellNameFont [UIFont systemFontOfSize:15]
+#define StatusCellTimeFont [UIFont systemFontOfSize:12]
+
 #endif

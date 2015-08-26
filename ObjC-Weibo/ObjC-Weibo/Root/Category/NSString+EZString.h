@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface NSString (EZString)
 /**
@@ -77,6 +78,14 @@
  *  data转换为string
  */
 + (NSString *)ez_getStringFromData:(NSData *)data;
+/**
+ *  计算文字SIZE
+ */
+- (CGSize)ez_sizeWithFont:(UIFont *)font;
+/**
+ *  计算文字SIZE
+ */
+- (CGSize)ez_sizeWithFont:(UIFont *)font withMaxWidth:(CGFloat)maxWidth;
 /**
  *  转换成JSon string
  */

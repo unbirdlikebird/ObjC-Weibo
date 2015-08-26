@@ -14,4 +14,10 @@
     return @{@"classProperty":@"class", @"userIdentifier":@"id", @"userDescription":@"description" };
 }
 
+- (void)setMbtype:(double)mbtype {
+    _mbtype = mbtype;
+    self.vip = mbtype > 2;
+}
+
+
 @end

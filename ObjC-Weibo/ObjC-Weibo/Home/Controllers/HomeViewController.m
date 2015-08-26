@@ -10,11 +10,11 @@
 #import "Macros.h"
 #import "AccountTools.h"
 #import "User.h"
-#import "Status.h"
+#import "StatusFrame.h"
 #import "HomeCell.h"
 
 @interface HomeViewController ()<UITableViewDataSource, UITableViewDelegate>
-@property (nonatomic, strong) NSMutableArray *statuses;
+@property (nonatomic, strong) NSMutableArray *statusFrames;
 @property (nonatomic, strong) UITableView *tableView;
 
 @end
@@ -89,9 +89,10 @@
     params[@"access_token"] = account.access_token;
     params[@"uid"] = account.uid;
     params[@"count"] = @20;
-    Status *status = [self.statuses firstObject];
-    if (status) {
-        params[@"since_id"] = status.idstr;
+    
+    StatusFrame *statusFrame = [self.statusFrames firstObject];
+    if (statusFrame) {
+        params[@"since_id"] = statusFrame.status.idstr;
     }
     
     [mgr GET:kTimeline parameters:params success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
@@ -100,12 +101,20 @@
             [sender endRefreshing];
         }
         NSArray *newStatuses = [Status objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
-        NSIndexSet *newStatuesLocation = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, newStatuses.count)];
-        [self.statuses insertObjects:newStatuses atIndexes:newStatuesLocation];
+        
+        NSMutableArray *newStatusFrames = [NSMutableArray array];
+        for (Status *status in newStatuses) {
+            StatusFrame *statusFrame = [[StatusFrame alloc] init];
+            statusFrame.status = status;
+            [newStatusFrames addObject:statusFrame];
+        }
+        
+        NSIndexSet *newStatuesLocation = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, newStatusFrames.count)];
+        [self.statusFrames insertObjects:newStatusFrames atIndexes:newStatuesLocation];
 
         [sender endRefreshing];
         [self.tableView reloadData];
-        [self showNewStatusCount:newStatuses.count];
+        [self showNewStatusCount:newStatusFrames.count];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if ([sender isRefreshing]) {
@@ -192,18 +201,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.statuses.count;
+    return self.statusFrames.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *reuseIdentifier = @"reuseIdentifier";
-    
-    HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
-    
-    if (!cell) {
-        cell = [[HomeCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
-    }
+   
+    HomeCell *cell = [HomeCell cellWithTableView:tableView];
     
     [self configureCell:cell forRowAtIndexPath:indexPath];
     
@@ -212,13 +216,14 @@
 
 - (void)configureCell:(HomeCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    Status *status = self.statuses[indexPath.row];
-    [cell.imageViewProfile sd_setImageWithURL:[NSURL URLWithString:status.user.profile_image_url] placeholderImage:[UIImage imageNamed:@"avatar_default"]];
-    cell.labelUserName.text = status.user.name;
-    cell.labelContent.text = status.text;
-//    cell.labelTime.text = status.created_at;
-    [cell setNeedsUpdateConstraints];
-    [cell updateConstraintsIfNeeded];
+    cell.statusFrame = self.statusFrames[indexPath.row];
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    StatusFrame *statusFrame = self.statusFrames[indexPath.row];
+    return statusFrame.cellHeight;
 }
 
 #pragma mark - data init
@@ -234,11 +239,11 @@
     return _tableView;
 }
 
-- (NSMutableArray *)statuses {
-    if (!_statuses){
-        _statuses = [[NSMutableArray alloc] init];
+- (NSMutableArray *)statusFrames {
+    if (!_statusFrames){
+        _statusFrames = [[NSMutableArray alloc] init];
     }
-    return _statuses;
+    return _statusFrames;
 }
 
 @end

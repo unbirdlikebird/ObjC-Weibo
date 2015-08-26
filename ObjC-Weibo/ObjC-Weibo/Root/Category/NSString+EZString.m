@@ -160,6 +160,17 @@
     return  [[NSString alloc] initWithBytes:data length:NUMBER_OF_CHARS encoding:NSUTF8StringEncoding];
 }
 
+
+- (CGSize)ez_sizeWithFont:(UIFont *)font {
+    return [self boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil].size;
+
+}
+
+- (CGSize)ez_sizeWithFont:(UIFont *)font withMaxWidth:(CGFloat)maxWidth {
+    
+    return [self boundingRectWithSize:CGSizeMake(maxWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil].size;
+}
+
 // Return JSON String
 + (NSString*)ez_getJSONSStringByJSONObject:(id)jsonObject {
     NSString *jsonString = nil;
